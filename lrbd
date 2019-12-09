@@ -1297,10 +1297,10 @@ class Backstores(object):
         """
         Execute saved commands
         """
-        # TargetcliDispatcher can't be used with a retry loop, unless we want
-        # to redo the entire sequence of commands, so keep synchronous here.
-        for cmd in uniq(self.cmds):
-            retry(cmd)
+        td = TargetcliDispatcher()
+        for cmd in self.cmds:
+            td.queue_cmd(cmd)
+        td.flush_close()
         self._enable_rbd()
 
     def _enable_rbd(self):
