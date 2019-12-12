@@ -30,7 +30,7 @@ Requires: python-netifaces
 Requires: python-rados
 Requires: python-rbd
 Requires: ceph-common
-Requires: targetcli-rbd
+Requires: targetcli-rbd >= 2.1.1
 Summary: Configures iSCSI access to Ceph rbd images
 
 %description
